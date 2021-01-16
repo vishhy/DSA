@@ -193,6 +193,7 @@ public:
                      << "Key: " << temp->key << "  Data: " << temp->data;
                 temp = temp->next;
             }
+            cout<<endl;
         }
     }
 };
@@ -201,18 +202,85 @@ int main()
 {
 
     LinkedList l1;
-    node *n1 = new node(1, 34);
-    node *n2 = new node(2, 66);
-    node *n4 = new node(3, 34);
-    node *n3 = new node(-67, 7);
+    // node *n1 = new node(1, 34);
+    // node *n2 = new node(2, 66);
+    // node *n3 = new node(-67, 7);
+    // node *n4 = new node(3, 34);
+    // node *n6 = new node(33, 678);
     // node *n5 = new node();
-    l1.prependnode(n1);
-    l1.appendnode(n2);
-    l1.appendnode(n4);
-    l1.insertnode_after(3, n3);
+    // l1.prependnode(n1);
+    // l1.appendnode(n2);
+    // l1.appendnode(n4);
+    // l1.insertnode_after(3, n3);
+    // l1.insertnode_after(1, n6);
+    // l1.insertnode_after(1, n6);
     // l1.deleteNode_byKey(-67);
-    l1.updatenode_bykey(-67, 90);
-    l1.print_list();
+    // // l1.updatenode_bykey(-67, 90);
+    // l1.print_list();
+    int option;
 
+    do{
+        cout<<"Select the task from the menu or to exit press 0"<<endl;
+        cout<<"1. Append Node"<<endl;
+        cout<<"2. Prepend Node"<<endl;
+        cout<<"3. Insert Node after a Node"<<endl;
+        cout<<"4. Delete a Node"<<endl;
+        cout<<"5. Update a Node"<<endl;
+        cout<<"6. Print List"<<endl;
+        cout<<"7. Clear Screen"<<endl;
+        node* n1 = new node();
+        int k , d;
+        cout<<"Enter the desired serial number"<<endl;
+        cin>>option;
+
+        switch(option){
+            case 0: break;
+            case 1: 
+                cout<<"Enter the Key and Data to append the node: "<<endl;
+                cin>>k>>d;
+                n1->key = k;
+                n1->data =d;
+                l1.appendnode(n1);
+                break;
+            case 2:
+                cout<<"Enter the Key and Data to Prepend the node: "<<endl;
+                cin>>k>>d;
+                n1->key = k;
+                n1->data =d;
+                l1.prependnode(n1);
+                break;
+            case 3:
+                int k1;
+                cout<<"Enter the key of the node after which you want to insert a node: "<<endl;
+                cin>>k1;
+                cout<<"Enter the key and data for the new node: "<<endl;
+                cin>>k;
+                cin>>d;
+                n1->key = k;
+                n1->data =d;
+                l1.insertnode_after(k1, n1);
+                break;
+            case 4:
+                cout<<"Enter the key of the node that you want to delete: "<<endl;
+                cin>>k;
+                l1.deleteNode_byKey(k);
+                break;
+            case 5:
+                cout<<"Enter the key and data of the node that you want to update: "<<endl;
+                cin>>k>>d;
+                l1.updatenode_bykey(k,d);
+                break;
+            case 6:
+                cout<<"Printing the List"<<endl;
+                l1.print_list();
+                break;
+            case 7: 
+                system("cls");
+                break;
+            default:
+                cout<<"Enter a proper serial number"<<endl;
+        }
+    }
+    while(option != 0);
     return 0;
 }
